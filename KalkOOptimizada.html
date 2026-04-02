@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTC Ultra-Visual</title>
+    <style>
+        :root {
+            --bg: #08080a;
+            --accent: #ff00ff; /* Magenta Neón */
+            --secondary: #00d4ff; /* Cian Vivo */
+            --glass: rgba(255, 255, 255, 0.05);
+            --text: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #08080a 100%);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Efecto de orbe de luz de fondo */
+        .glow-bg {
+            position: absolute;
+            width: 300px; height: 300px;
+            background: var(--accent);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: pulse 8s infinite alternate;
+        }
+
+        @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.5); } }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            width: 380px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .ticker {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        input {
+            width: 100%;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(255,255,255,0.1);
+            padding: 15px;
+            color: white;
+            font-size: 1.4rem;
+            border-radius: 15px;
+            outline: none;
+            transition: 0.3s;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: var(--secondary);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .action-zone { height: 160px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 20px; }
+
+        .reveal-btn {
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 20px rgba(255, 0, 255, 0.3);
+        }
+
+        .reveal-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 0, 255, 0.5); }
+
+        /* Círculo de Suspense mejorado */
+        .progress-container { position: relative; width: 120px; height: 120px; display: none; }
+        
+        .progress-svg { transform: rotate(-90deg); filter: drop-shadow(0 0 8px var(--accent)); }
+        
+        .progress-circle-bg { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 10; }
+        
+        .progress-circle-bar {
+            fill: none;
+            stroke: url(#gradient);
+            stroke-width: 10;
+            stroke-dasharray: 314; /* 2 * PI * 50 */
+            stroke-dashoffset: 314;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .result-display { display: none; animation: fadeIn 0.5s ease-out; }
+        
+        .euro-label { font-size: 0.8rem; text-transform: uppercase; color: #888; letter-spacing: 2px; }
+        
+        .euro-value {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(to bottom, #fff, #bbb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 5px 0;
+        }
+
+        .reset-link { color: var(--secondary); cursor: pointer; font-size: 0.8rem; text-decoration: none; border-bottom: 1px solid; padding-bottom: 2px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+<div class="glow-bg"></div>
+
+<div class="card">
+    <h1>BITCOIN LIVE</h1>
+    <div class="ticker" id="btcPrice">CARGANDO PRECIO...</div>
+
+    <input type="number" id="btcAmount" placeholder="0.00 BTC" step="any">
+
+    <div class="action-zone">
+        <button class="reveal-btn" id="revealBtn" onclick="startSuspense()">REVELAR VALOR</button>
+
+        <div class="progress-container" id="suspenseCircle">
+            <svg class="progress-svg" width="120" height="120" viewBox="0 0 120 120">
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00d4ff" />
+                        <stop offset="100%" stop-color="#ff00ff" />
+                    </linearGradient>
+                </defs>
+                <circle class="progress-circle-bg" cx="60" cy="60" r="50"></circle>
+                <circle class="progress-circle-bar" id="progressBar" cx="60" cy="60" r="50"></circle>
+            </svg>
+        </div>
+
+        <div class="result-display" id="resultDisplay">
+            <div class="euro-label">VALOR TOTAL EN EUROS</div>
+            <div class="euro-value" id="euroResult">0,00 €</div>
+            <span class="reset-link" onclick="resetCalc()">NUEVA CONSULTA</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentPrice = 0;
+    
+    // Carga asíncrona no bloqueante (Debian-friendly)
+    window.addEventListener('load', () => {
+        setTimeout(fetchPrice, 500);
+    });
+
+    async function fetchPrice() {
+        try {
+            const res = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCEUR');
+            const data = await res.json();
+            currentPrice = parseFloat(data.price);
+            document.getElementById('btcPrice').innerText = `1 BTC = ${currentPrice.toLocaleString('es-ES')} €`;
+        } catch (e) {
+            document.getElementById('btcPrice').innerText = "BINANCE OFFLINE";
+        }
+    }
+
+    function startSuspense() {
+        const val = document.getElementById('btcAmount').value;
+        if (!val || currentPrice === 0) return;
+
+        document.getElementById('revealBtn').style.display = 'none';
+        document.getElementById('suspenseCircle').style.display = 'block';
+
+        setTimeout(() => {
+            document.getElementById('progressBar').style.strokeDashoffset = '0';
+        }, 50);
+
+        setTimeout(() => {
+            showResult(val * currentPrice);
+        }, 2600);
+    }
+
+    function showResult(finalValue) {
+        document.getElementById('suspenseCircle').style.display = 'none';
+        document.getElementById('resultDisplay').style.display = 'block';
+        
+        const el = document.getElementById('euroResult');
+        let start = 0;
+        const duration = 1500;
+        const startTime = performance.now();
+
+        function animate(now) {
+            const prog = Math.min(1, (now - startTime) / duration);
+            const current = prog * finalValue;
+            el.innerText = current.toLocaleString('es-ES', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+            if (prog < 1) requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+    }
+
+    function resetCalc() {
+        document.getElementById('resultDisplay').style.display = 'none';
+        document.getElementById('revealBtn').style.display = 'block';
+        document.getElementById('btcAmount').value = '';
+        document.getElementById('progressBar').style.strokeDashoffset = '314';
+    }
+
+    setInterval(fetchPrice, 30000);
+</script>
+
+</body>
+</html>

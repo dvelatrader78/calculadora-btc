@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTC a EUR - Binance Live</title>
+    <style>
+        body { font-family: sans-serif; background: #121212; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: #1e1e1e; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; }
+        h2 { color: #F3BA2F; margin-bottom: 1rem; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; font-size: 1.1rem; box-sizing: border-box; }
+        .price-box { font-size: 0.9rem; color: #888; margin-bottom: 20px; }
+        .result { font-size: 1.5rem; font-weight: bold; color: #4CAF50; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Calculadora BTC/EUR</h2>
+    <div class="price-box" id="ticker">Cargando precio de Binance...</div>
+    
+    <label>Cantidad en BTC:</label>
+    <input type="number" id="btcInput" placeholder="Ej: 0.001" step="any" oninput="convert()">
+    
+    <div class="result" id="eurOutput">0.00 €</div>
+</div>
+
+<script>
+    let currentPrice = 0;
+
+    // Función para obtener el precio de Binance en tiempo real
+    async function fetchPrice() {
+        try {
+            const response = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCEUR');
+            const data = await response.json();
+            currentPrice = parseFloat(data.price);
+            document.getElementById('ticker').innerText = `Cotización actual: ${currentPrice.toLocaleString()} €`;
+            convert(); // Recalcular al actualizar precio
+        } catch (error) {
+            document.getElementById('ticker').innerText = "Error al conectar con Binance";
+        }
+    }
+
+    function convert() {
+        const btcValue = document.getElementById('btcInput').value;
+        const output = document.getElementById('eurOutput');
+        if (btcValue && currentPrice) {
+            const total = btcValue * currentPrice;
+            output.innerText = total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+        } else {
+            output.innerText = "0.00 €";
+        }
+    }
+
+    // Actualizar cada 10 segundos
+    fetchPrice();
+    setInterval(fetchPrice, 10000);
+</script>
+
+</body>
+</html>
