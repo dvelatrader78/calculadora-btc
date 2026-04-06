@@ -4,32 +4,34 @@
     <link rel="icon" href="https://cryptologos.cc/logos/bitcoin-btc-logo.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adictos.shop | TEMU Premium Hub</title>
+    <title>Adictos.club | VIP Shopping Hub</title>
+    
+    
     <style>
         :root {
             --bg: #050508;
             --gold: #ffcc00;
             --cyan: #00f2ff;
             --magenta: #ff007a;
-            --temu-orange: #ff6600;
-            --glass: rgba(15, 15, 25, 0.7);
+            --glass: rgba(15, 15, 25, 0.45); /* Más transparente para ver el fondo */
         }
 
         body {
             font-family: 'Inter', system-ui, sans-serif;
             background-color: var(--bg);
-            /* Fondo dinámico sin imágenes externas para máxima velocidad */
+            /* Degradado radial para iluminar el eclipse y oscurecer la zona de texto */
             background-image: 
-                radial-gradient(circle at 85% 20%, rgba(255, 102, 0, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 10% 80%, rgba(0, 242, 255, 0.08) 0%, transparent 40%),
-                linear-gradient(135deg, #050508 0%, #12121f 100%);
+                radial-gradient(circle at 85% 50%, rgba(255, 150, 50, 0.15) 0%, rgba(5, 5, 8, 0.85) 60%), 
+                url('NuevoCristo.jpeg'); 
             background-size: cover;
+            background-position: 85% center; 
+            background-repeat: no-repeat;
             background-attachment: fixed;
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start; 
+            align-items: flex-start; /* Calculadora a la izquierda */
             padding-left: 8%;
             min-height: 100vh;
             margin: 0;
@@ -42,7 +44,7 @@
             left: 85%;
             transform: translate(-50%, -50%);
             width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(255, 102, 0, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 165, 0, 0.15) 0%, transparent 70%);
             border-radius: 50%; z-index: 0; filter: blur(60px);
             pointer-events: none;
         }
@@ -58,24 +60,25 @@
         }
 
         .brand-header { margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; }
-        .logo-img { width: 130px; height: auto; border-radius: 20px; box-shadow: 0 0 20px rgba(255, 102, 0, 0.2); margin-bottom: 10px; }
-        .brand-name { font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; background: linear-gradient(to right, var(--temu-orange), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
-        
+        .logo-img { width: 130px; height: auto; border-radius: 20px; box-shadow: 0 0 20px rgba(0, 242, 255, 0.2); margin-bottom: 10px; }
+        .brand-name { font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; background: linear-gradient(to right, var(--cyan), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
         .ticker { font-size: 1.1rem; color: var(--gold); font-weight: 800; margin-bottom: 25px; text-shadow: 0 0 15px rgba(255, 204, 0, 0.4); }
 
         input {
             width: 100%; background: rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.1);
             padding: 18px; color: white; font-size: 1.7rem; border-radius: 20px; text-align: center; box-sizing: border-box;
         }
-        input:focus { border-color: var(--temu-orange); outline: none; background: rgba(0,0,0,0.7); }
+        input:focus { border-color: var(--cyan); outline: none; background: rgba(0,0,0,0.7); }
 
         .btn-reveal {
-            background: linear-gradient(45deg, var(--temu-orange), #ff9000);
+            background: linear-gradient(45deg, var(--cyan), var(--magenta));
             color: white; border: none; padding: 18px 45px; font-size: 1.1rem; font-weight: 900;
-            border-radius: 50px; cursor: pointer; box-shadow: 0 10px 40px rgba(255, 102, 0, 0.3);
-            margin-top: 20px; transition: transform 0.2s;
+            border-radius: 50px; cursor: pointer; box-shadow: 0 10px 40px rgba(255, 0, 122, 0.3);
+            margin-top: 20px;
         }
-        .btn-reveal:hover { transform: scale(1.05); }
+
+        .loader-ring { display: none; transform: rotate(-90deg); margin: 20px auto; }
+        .circle-proc { fill: none; stroke: var(--gold); stroke-width: 10; stroke-dasharray: 283; stroke-dashoffset: 283; stroke-linecap: round; transition: stroke-dashoffset 2.5s ease-in-out; }
 
         #result-wrapper { display: none; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); margin-top: 20px; }
         .res-value { font-size: 3.2rem; font-weight: 900; color: white; margin: 10px 0; }
@@ -84,18 +87,14 @@
             background: linear-gradient(135deg, #ff6600 0%, #ff4400 100%);
             border-radius: 25px; padding: 20px; margin-top: 25px;
             color: white; text-decoration: none; display: block;
-            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.4);
-            transition: all 0.3s ease;
         }
-        .temu-box:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255, 102, 0, 0.6); }
         .coupon-code { background: rgba(0,0,0,0.3); padding: 5px 12px; border-radius: 8px; font-family: monospace; border: 1px dashed white; display: inline-block; margin-top: 8px; }
-        
-        .loader-ring { display: none; transform: rotate(-90deg); margin: 20px auto; }
-        .circle-proc { fill: none; stroke: var(--temu-orange); stroke-width: 10; stroke-dasharray: 283; stroke-dashoffset: 283; stroke-linecap: round; transition: stroke-dashoffset 2.5s ease-in-out; }
         .reset-btn { margin-top: 25px; color: #888; cursor: pointer; font-size: 0.8rem; text-transform: uppercase; }
 
         @keyframes popIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
+    
+    
 </head>
 <body>
 
@@ -104,13 +103,13 @@
     <div class="card">
         <div class="brand-header">
             <img src="logo1.jpg" alt="Adictos Logo" class="logo-img">
-            <h2 class="brand-name">ADICTOS.SHOP</h2>
-            <div style="font-size: 0.6rem; color: var(--gold); letter-spacing: 3px; font-weight: 800; text-transform: uppercase; margin-top: 5px;">
-                Official Temu Seller Hub
+            <h2 class="brand-name">ADICTOS.CLUB</h2>
+            <div style="font-size: 0.6rem; color: var(--magenta); letter-spacing: 3px; font-weight: 800; text-transform: uppercase; margin-top: 5px;">
+                The Exclusive Shopping Club
             </div>
         </div>
 
-        <h1 style="font-size: 0.7rem; letter-spacing: 4px; color: #aaa; margin-bottom: 5px; text-transform: uppercase;">BTC Market Value</h1>
+        <h1 style="font-size: 0.7rem; letter-spacing: 4px; color: #666; margin-bottom: 5px; text-transform: uppercase;">BTC Real-Time Value</h1>
         <div id="price" class="ticker">CONECTANDO...</div>
 
         <input type="number" id="btc" placeholder="0.00 BTC" step="any">
@@ -126,11 +125,11 @@
             </div>
 
             <div id="result-wrapper">
-                <div style="font-size: 0.7rem; color: var(--cyan); letter-spacing: 2px;">SALDO DISPONIBLE PARA COMPRAS</div>
+                <div style="font-size: 0.7rem; color: var(--cyan); letter-spacing: 2px;">TUS EUROS ESTIMADOS</div>
                 <div id="total" class="res-value">0,00 €</div>
                 
                 <a href="https://temu.to/k/e0tl61vc72u" class="temu-box" target="_blank">
-                    <div style="font-size: 0.9rem; font-weight: 800;">🎁 CANJEAR EN TEMU (0€)</div>
+                    <div style="font-size: 0.9rem; font-weight: 800;">🎁 ¡CONSIGUE TUS REGALOS A 0€!</div>
                     <div class="coupon-code">alh129997</div>
                 </a>
                 
@@ -149,7 +148,7 @@
             const d = await r.json();
             btcPrice = parseFloat(d.price);
             document.getElementById('price').innerText = `1 BTC = ${btcPrice.toLocaleString('es-ES')} €`;
-        } catch(e) { document.getElementById('price').innerText = "CONEXIÓN OFFLINE"; }
+        } catch(e) { document.getElementById('price').innerText = "BINANCE OFFLINE"; }
     }
 
     function calculate() {
@@ -172,4 +171,23 @@
         function step(timestamp) {
             if (!start) start = timestamp;
             const progress = Math.min((timestamp - start) / duration, 1);
-            const current = progress
+            const current = progress * end;
+            obj.innerText = current.toLocaleString('es-ES', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    function reset() {
+        document.getElementById('result-wrapper').style.display = 'none';
+        document.getElementById('go').style.display = 'block';
+        document.getElementById('btc').value = '';
+        document.getElementById('bar').style.strokeDashoffset = '283';
+    }
+    setInterval(updatePrice, 30000);
+</script>
+
+</body>
+</html>
+ 
+
