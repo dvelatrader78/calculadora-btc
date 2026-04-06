@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="https://cryptologos.cc/logos/bitcoin-btc-logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adictos.shop | TEMU Premium Hub</title>
+    <style>
+        :root {
+            --bg: #050508;
+            --gold: #ffcc00;
+            --cyan: #00f2ff;
+            --temu-orange: #ff6600;
+            --glass: rgba(15, 15, 25, 0.7);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 85% 20%, rgba(255, 102, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(0, 242, 255, 0.08) 0%, transparent 40%),
+                linear-gradient(135deg, #050508 0%, #12121f 100%);
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .main-flex-container {
+            display: flex;
+            flex-direction: row; 
+            align-items: stretch; /* Esto hace que ambos midan lo mismo de alto */
+            gap: 34px; 
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center; 
+        }
+
+        /* Contenedor de la Calculadora */
+        .card {
+            flex: 0 0 380px;
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px;
+            border-radius: 40px;
+            box-shadow: 0 20px 100px rgba(0,0,0,0.8);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Contenedor del Banner con EFECTO NEÓN */
+        .binance-container {
+            flex: 1;
+            display: flex;
+        }
+
+        .binance-anchor {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 40px; /* Igual que la calculadora */
+            overflow: hidden;
+            position: relative;
+            
+            /* BORDE NEÓN AZUL */
+            border: 3px solid var(--cyan);
+            box-shadow: 
+                0 0 10px var(--cyan), 
+                0 0 20px rgba(0, 242, 255, 0.2),
+                inset 0 0 15px rgba(0, 242, 255, 0.2);
+        }
+
+        .binance-anchor:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--cyan), 0 0 40px rgba(0, 242, 255, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .binance-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta la imagen sin deformar para llenar el alto */
+            display: block;
+        }
+
+        /* Estética interna de la calculadora */
+        .brand-header { margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; }
+        .logo-img { width: 110px; height: auto; border-radius: 15px; margin-bottom: 10px; }
+        .brand-name { font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; background: linear-gradient(to right, var(--temu-orange), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
+        .ticker { font-size: 1.1rem; color: var(--gold); font-weight: 800; margin-bottom: 20px; }
+        
+        input {
+            width: 100%; background: rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 15px; color: white; font-size: 1.5rem; border-radius: 20px; text-align: center; box-sizing: border-box;
+        }
+        input:focus { border-color: var(--temu-orange); outline: none; }
+
+        .btn-reveal {
+            background: linear-gradient(45deg, var(--temu-orange), #ff9000);
+            color: white; border: none; padding: 15px 30px; font-size: 1rem; font-weight: 900;
+            border-radius: 50px; cursor: pointer; margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-flex-container { flex-direction: column; align-items: center; }
+            .card, .binance-anchor { width: 100%; max-width: 380px; height: auto; }
+            .binance-img { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-flex-container">
+        
+        <div class="card">
+            <div class="brand-header">
+                <img src="logo1.jpg" alt="Adictos Logo" class="logo-img">
+                <h2 class="brand-name">ADICTOS.SHOP</h2>
+            </div>
+            <div id="price" class="ticker">CARGANDO BTC...</div>
+            <input type="number" id="btc" placeholder="0.00 BTC">
+            <button class="btn-reveal" onclick="calculate()">REVELAR FORTUNA</button>
+            <div id="result-wrapper" style="display:none; margin-top:20px;">
+                <div id="total" style="font-size: 2rem; font-weight: 900;"></div>
+                <a href="https://temu.to/k/e0tl61vc72u" style="color:var(--temu-orange); text-decoration:none; font-weight:bold; display:block; margin-top:10px;">CÓDIGO TEMU: alh129997</a>
+            </div>
+        </div>
+
+        <div class="binance-container">
+            <a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00D3WIQWMG" class="binance-anchor" target="_blank">
+                <img src="bannerBinanceHorizontal.png" alt="Binance 100 USD Reward" class="binance-img">
+            </a>
+        </div>
+
+    </div>
+
+<script>
+    let btcPrice = 0;
+    async function updatePrice() {
+        try {
+            const r = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCEUR');
+            const d = await r.json();
+            btcPrice = parseFloat(d.price);
+            document.getElementById('price').innerText = `1 BTC = ${btcPrice.toLocaleString('es-ES')} €`;
+        } catch(e) { document.getElementById('price').innerText = "ERROR DE PRECIO"; }
+    }
+    function calculate() {
+        const val = document.getElementById('btc').value;
+        if (!val || btcPrice === 0) return;
+        const res = document.getElementById('result-wrapper');
+        res.style.display = 'block';
+        document.getElementById('total').innerText = (val * btcPrice).toLocaleString('es-ES') + ' €';
+    }
+    window.onload = updatePrice;
+</script>
+</body>
+</html>
