@@ -4,14 +4,12 @@
     <link rel="icon" href="https://cryptologos.cc/logos/bitcoin-btc-logo.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adictos.shop | Binance & NC Wallet Hub</title>
+    <title>Adictos.shop | Binance & TEMU Hub</title>
     <style>
         :root {
-            --bg: #050509;
+            --bg: #050508;
             --gold: #ffcc00;
             --neon-electric-blue: #0055ff; 
-            --neon-cyan: #00FFFF;
-            --neon-purple: #9D00FF;
             --temu-orange: #ff6600;
             --glass: rgba(15, 15, 25, 0.7);
         }
@@ -19,10 +17,11 @@
         body {
             font-family: 'Inter', system-ui, sans-serif;
             background-color: var(--bg);
-            /* Nuevo fondo inmersivo Cyberpunk */
-            background-image: url('fondoWebPage.png');
+            background-image: 
+                radial-gradient(circle at 85% 20%, rgba(255, 102, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(0, 85, 255, 0.08) 0%, transparent 40%),
+                linear-gradient(135deg, #050508 0%, #12121f 100%);
             background-size: cover;
-            background-position: center;
             background-attachment: fixed;
             color: white;
             display: flex;
@@ -59,45 +58,34 @@
             text-align: center;
         }
 
-        /* Lado Derecho: Columna de Banners */
-        .banners-column {
+        /* Lado Derecho: Banner Binance */
+        .binance-container {
             flex: 1; 
             display: flex;
-            flex-direction: column; /* Apila los banners verticalmente */
             justify-content: flex-start;
-            gap: 30px; /* Separación entre el banner de Binance y NC Wallet */
             margin-top: 15px;
         }
 
-        /* --- Estilos compartidos para enlaces de Banners --- */
-        .binance-anchor, .nc-banner-link {
-			
-			display: block;
-			text-decoration: none;
-			transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			border-radius: 28px;
-			overflow: hidden;
-			width: 100%;
-			/* Eliminamos la altura fija de 180px para evitar el efecto 'aplastado' */
-			height: auto; 
-			min-height: 250px; /* Un mínimo para que no se vea pequeño */
-			background: #000;
-        }
-
-        .binance-img, .nc-banner-img {
-            
-			width: 100%;
-			height: auto; /* La altura se ajusta sola según el ancho */
-			display: block;
-			object-fit: contain; /* Mantiene la proporción perfecta sin estirar */
-			transition: opacity 0.3s ease;
-			
-        }
-
-        /* --- Banner Binance Específico --- */
         .binance-anchor {
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 28px;
+            overflow: hidden;
+            
+            /* Borde 7px (un tercio menos que 10px) */
             border: 7px solid var(--neon-electric-blue);
-            box-shadow: 0 0 15px rgba(0, 85, 255, 0.6), 0 0 30px rgba(0, 85, 255, 0.3);
+            
+            /* Resplandor Azul Eléctrico */
+            box-shadow: 
+                0 0 15px rgba(0, 85, 255, 0.6),
+                0 0 30px rgba(0, 85, 255, 0.3);
+            
+            /* Ajuste de altura para asegurar visibilidad */
+            min-height: 180px;
+            width: auto;
+            max-width: 100%;
+            background: #000; /* Fondo negro por si la imagen tarda en cargar */
         }
 
         .binance-anchor:hover {
@@ -105,22 +93,11 @@
             box-shadow: 0 0 30px rgba(0, 85, 255, 0.8), 0 0 50px rgba(0, 85, 255, 0.5);
         }
 
-        /* --- Banner NC Wallet Específico --- */
-        .nc-banner-link {
-            /* Mismo borde de 7px para mantener el peso visual, pero con la paleta Cian/Púrpura */
-            border: 7px solid var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4), inset 0 0 10px rgba(157, 0, 255, 0.5);
-            background-color: #050505;
-        }
-
-        .nc-banner-link:hover {
-            transform: scale(1.03) translateY(-5px);
-            border-color: var(--neon-purple); /* Cambia a púrpura al pasar el ratón */
-            box-shadow: 0 0 30px var(--neon-purple), 0 0 50px var(--neon-cyan);
-        }
-        
-        .nc-banner-link:hover .nc-banner-img {
-            opacity: 0.95;
+        .binance-img {
+            height: 180px; /* Forzamos la altura para que coincida con el anchor */
+            width: auto;
+            display: block;
+            object-fit: contain;
         }
 
         /* Estilos internos de la calculadora */
@@ -149,12 +126,10 @@
         }
         .coupon-code { background: rgba(0,0,0,0.3); padding: 5px 12px; border-radius: 8px; font-family: monospace; border: 1px dashed white; display: inline-block; }
 
-        /* --- Responsivo --- */
         @media (max-width: 1000px) {
             .main-flex-container { flex-direction: column; align-items: center; }
-            .banners-column { width: 100%; max-width: 380px; align-items: center; }
-            .binance-anchor, .nc-banner-link { height: auto; width: 100%; max-width: 380px; min-height: auto; }
-            .binance-img, .nc-banner-img { width: 100%; height: auto; }
+            .binance-anchor { height: auto; width: 100%; max-width: 380px; }
+            .binance-img { width: 100%; height: auto; }
         }
     </style>
 </head>
@@ -183,13 +158,9 @@
             </div>
         </div>
 
-        <div class="banners-column">
+        <div class="binance-container">
             <a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00D3WIQWMG" class="binance-anchor" target="_blank" rel="nofollow noopener">
                 <img src="bannerBinanceHorizontal.png" alt="Binance Promo" class="binance-img">
-            </a>
-            
-            <a href="https://ncwallet.net/invite-app/A941CYBP?lang=es" target="_blank" rel="noopener noreferrer" class="nc-banner-link" title="Descargar NC Wallet - Sin comisiones">
-                <img src="bannerNCWallet.png" alt="NC Wallet - La primera wallet con retiradas sin comisiones de red" class="nc-banner-img" loading="lazy">
             </a>
         </div>
     </div>
