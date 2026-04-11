@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BGD0E50850"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BGD0E50850');
+    </script>
+
     <link rel="icon" href="https://cryptologos.cc/logos/bitcoin-btc-logo.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +28,6 @@
         body {
             font-family: 'Inter', system-ui, sans-serif;
             background-color: var(--bg);
-            /* Nuevo fondo inmersivo Cyberpunk */
             background-image: url('fondoWebPage.png');
             background-size: cover;
             background-position: center;
@@ -44,7 +52,6 @@
             justify-content: center; 
         }
 
-        /* Lado Izquierdo: Calculadora */
         .card-container {
             flex: 0 0 380px;
             z-index: 1;
@@ -59,42 +66,35 @@
             text-align: center;
         }
 
-        /* Lado Derecho: Columna de Banners */
         .banners-column {
             flex: 1; 
             display: flex;
-            flex-direction: column; /* Apila los banners verticalmente */
+            flex-direction: column;
             justify-content: flex-start;
-            gap: 30px; /* Separación entre el banner de Binance y NC Wallet */
+            gap: 30px;
             margin-top: 15px;
         }
 
-        /* --- Estilos compartidos para enlaces de Banners --- */
         .binance-anchor, .nc-banner-link {
-			
-			display: block;
-			text-decoration: none;
-			transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			border-radius: 28px;
-			overflow: hidden;
-			width: 100%;
-			/* Eliminamos la altura fija de 180px para evitar el efecto 'aplastado' */
-			height: auto; 
-			min-height: 250px; /* Un mínimo para que no se vea pequeño */
-			background: #000;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 28px;
+            overflow: hidden;
+            width: 100%;
+            height: auto; 
+            min-height: 250px;
+            background: #000;
         }
 
         .binance-img, .nc-banner-img {
-            
-			width: 100%;
-			height: auto; /* La altura se ajusta sola según el ancho */
-			display: block;
-			object-fit: contain; /* Mantiene la proporción perfecta sin estirar */
-			transition: opacity 0.3s ease;
-			
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
         }
 
-        /* --- Banner Binance Específico --- */
         .binance-anchor {
             border: 7px solid var(--neon-electric-blue);
             box-shadow: 0 0 15px rgba(0, 85, 255, 0.6), 0 0 30px rgba(0, 85, 255, 0.3);
@@ -105,9 +105,7 @@
             box-shadow: 0 0 30px rgba(0, 85, 255, 0.8), 0 0 50px rgba(0, 85, 255, 0.5);
         }
 
-        /* --- Banner NC Wallet Específico --- */
         .nc-banner-link {
-            /* Mismo borde de 7px para mantener el peso visual, pero con la paleta Cian/Púrpura */
             border: 7px solid var(--neon-cyan);
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.4), inset 0 0 10px rgba(157, 0, 255, 0.5);
             background-color: #050505;
@@ -115,7 +113,7 @@
 
         .nc-banner-link:hover {
             transform: scale(1.03) translateY(-5px);
-            border-color: var(--neon-purple); /* Cambia a púrpura al pasar el ratón */
+            border-color: var(--neon-purple);
             box-shadow: 0 0 30px var(--neon-purple), 0 0 50px var(--neon-cyan);
         }
         
@@ -123,7 +121,6 @@
             opacity: 0.95;
         }
 
-        /* Estilos internos de la calculadora */
         .brand-header { margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; }
         .logo-img { width: 130px; height: auto; border-radius: 20px; box-shadow: 0 0 20px rgba(255, 102, 0, 0.2); margin-bottom: 10px; }
         .brand-name { font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; background: linear-gradient(to right, var(--temu-orange), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
@@ -149,7 +146,6 @@
         }
         .coupon-code { background: rgba(0,0,0,0.3); padding: 5px 12px; border-radius: 8px; font-family: monospace; border: 1px dashed white; display: inline-block; }
 
-        /* --- Responsivo --- */
         @media (max-width: 1000px) {
             .main-flex-container { flex-direction: column; align-items: center; }
             .banners-column { width: 100%; max-width: 380px; align-items: center; }
@@ -174,7 +170,7 @@
                     <div id="result-wrapper">
                         <div style="font-size: 0.7rem; color: var(--neon-electric-blue); letter-spacing: 2px; font-weight: 800;">SALDO ESTIMADO</div>
                         <div id="total" class="res-value">0,00 €</div>
-                        <a href="https://temu.to/k/e0tl61vc72u" class="temu-box" target="_blank">
+                        <a href="https://temu.to/k/e0tl61vc72u" class="temu-box" target="_blank" onclick="gtag('event', 'clic_banner', {'nombre_banner': 'temu_cupon'});">
                             <div style="font-weight: 800;">🎁 CANJEAR EN TEMU</div>
                             <div class="coupon-code">alh129997</div>
                         </a>
@@ -184,11 +180,11 @@
         </div>
 
         <div class="banners-column">
-            <a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00D3WIQWMG" class="binance-anchor" target="_blank" rel="nofollow noopener">
+            <a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00D3WIQWMG" class="binance-anchor" target="_blank" rel="nofollow noopener" onclick="gtag('event', 'clic_banner', {'nombre_banner': 'binance_referral'});">
                 <img src="bannerBinanceHorizontal.png" alt="Binance Promo" class="binance-img">
             </a>
             
-            <a href="https://ncwallet.net/invite-app/A941CYBP?lang=es" target="_blank" rel="noopener noreferrer" class="nc-banner-link" title="Descargar NC Wallet - Sin comisiones">
+            <a href="https://ncwallet.net/invite-app/A941CYBP?lang=es" target="_blank" rel="noopener noreferrer" class="nc-banner-link" title="Descargar NC Wallet - Sin comisiones" onclick="gtag('event', 'clic_banner', {'nombre_banner': 'nc_wallet_invite'});">
                 <img src="bannerNCWallet.png" alt="NC Wallet - La primera wallet con retiradas sin comisiones de red" class="nc-banner-img" loading="lazy">
             </a>
         </div>
@@ -207,6 +203,12 @@
     function calculate() {
         const val = document.getElementById('btc').value;
         if (!val || btcPrice === 0) return;
+        
+        // Registrar evento de uso de la calculadora en Analytics
+        gtag('event', 'uso_calculadora', {
+            'valor_btc': val
+        });
+
         document.getElementById('go').style.display = 'none';
         document.getElementById('result-wrapper').style.display = 'block';
         document.getElementById('total').innerText = (val * btcPrice).toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €';
