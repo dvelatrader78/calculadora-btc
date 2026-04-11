@@ -21,6 +21,7 @@
             --neon-electric-blue: #0055ff; 
             --neon-cyan: #00FFFF;
             --neon-purple: #9D00FF;
+            --neon-red: #FF0000; /* Color para tu nuevo servicio */
             --temu-orange: #ff6600;
             --glass: rgba(15, 15, 25, 0.7);
         }
@@ -75,7 +76,8 @@
             margin-top: 15px;
         }
 
-        .binance-anchor, .nc-banner-link {
+        /* Estilo base para todos los enlaces de banners */
+        .banner-link {
             display: block;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -83,11 +85,10 @@
             overflow: hidden;
             width: 100%;
             height: auto; 
-            min-height: 250px;
             background: #000;
         }
 
-        .binance-img, .nc-banner-img {
+        .banner-img {
             width: 100%;
             height: auto;
             display: block;
@@ -95,6 +96,18 @@
             transition: opacity 0.3s ease;
         }
 
+        /* BANNER NUEVO: HARDWARE NEÓN ROJO */
+        .hardware-anchor {
+            border: 7px solid var(--neon-red);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .hardware-anchor:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 50px rgba(255, 0, 0, 0.5);
+        }
+
+        /* BANNER BINANCE */
         .binance-anchor {
             border: 7px solid var(--neon-electric-blue);
             box-shadow: 0 0 15px rgba(0, 85, 255, 0.6), 0 0 30px rgba(0, 85, 255, 0.3);
@@ -105,10 +118,10 @@
             box-shadow: 0 0 30px rgba(0, 85, 255, 0.8), 0 0 50px rgba(0, 85, 255, 0.5);
         }
 
+        /* BANNER NC WALLET */
         .nc-banner-link {
             border: 7px solid var(--neon-cyan);
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.4), inset 0 0 10px rgba(157, 0, 255, 0.5);
-            background-color: #050505;
         }
 
         .nc-banner-link:hover {
@@ -117,10 +130,6 @@
             box-shadow: 0 0 30px var(--neon-purple), 0 0 50px var(--neon-cyan);
         }
         
-        .nc-banner-link:hover .nc-banner-img {
-            opacity: 0.95;
-        }
-
         .brand-header { margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; }
         .logo-img { width: 130px; height: auto; border-radius: 20px; box-shadow: 0 0 20px rgba(255, 102, 0, 0.2); margin-bottom: 10px; }
         .brand-name { font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; background: linear-gradient(to right, var(--temu-orange), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
@@ -149,8 +158,6 @@
         @media (max-width: 1000px) {
             .main-flex-container { flex-direction: column; align-items: center; }
             .banners-column { width: 100%; max-width: 380px; align-items: center; }
-            .binance-anchor, .nc-banner-link { height: auto; width: 100%; max-width: 380px; min-height: auto; }
-            .binance-img, .nc-banner-img { width: 100%; height: auto; }
         }
     </style>
 </head>
@@ -180,12 +187,23 @@
         </div>
 
         <div class="banners-column">
-            <a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00D3WIQWMG" class="binance-anchor" target="_blank" rel="nofollow noopener" onclick="gtag('event', 'clic_banner', {'nombre_banner': 'binance_referral'});">
-                <img src="bannerBinanceHorizontal.png" alt="Binance Promo" class="binance-img">
+            
+            <a href="contacto.html?utm_source=adictos_home&utm_medium=hero_banner&utm_campaign=RendimientoPuro..." 
+               class="banner-link hardware-anchor" 
+               onclick="gtag('event', 'clic_banner', {'nombre_banner': 'hardware_custom_pcs'});">
+                <img src="HardwareCampaña.png" alt="PCs y MiniPCs a medida" class="banner-img">
+            </a>
+
+            <a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00D3WIQWMG" 
+               class="banner-link binance-anchor" target="_blank" rel="nofollow noopener" 
+               onclick="gtag('event', 'clic_banner', {'nombre_banner': 'binance_referral'});">
+                <img src="bannerBinanceHorizontal.png" alt="Binance Promo" class="banner-img">
             </a>
             
-            <a href="https://ncwallet.net/invite-app/A941CYBP?lang=es" target="_blank" rel="noopener noreferrer" class="nc-banner-link" title="Descargar NC Wallet - Sin comisiones" onclick="gtag('event', 'clic_banner', {'nombre_banner': 'nc_wallet_invite'});">
-                <img src="bannerNCWallet.png" alt="NC Wallet - La primera wallet con retiradas sin comisiones de red" class="nc-banner-img" loading="lazy">
+            <a href="https://ncwallet.net/invite-app/A941CYBP?lang=es" 
+               target="_blank" rel="noopener noreferrer" class="banner-link nc-banner-link" title="Descargar NC Wallet - Sin comisiones" 
+               onclick="gtag('event', 'clic_banner', {'nombre_banner': 'nc_wallet_invite'});">
+                <img src="bannerNCWallet.png" alt="NC Wallet" class="banner-img" loading="lazy">
             </a>
         </div>
     </div>
@@ -204,10 +222,7 @@
         const val = document.getElementById('btc').value;
         if (!val || btcPrice === 0) return;
         
-        // Registrar evento de uso de la calculadora en Analytics
-        gtag('event', 'uso_calculadora', {
-            'valor_btc': val
-        });
+        gtag('event', 'uso_calculadora', { 'valor_btc': val });
 
         document.getElementById('go').style.display = 'none';
         document.getElementById('result-wrapper').style.display = 'block';

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presupuesto PC a Medida | Adictos.shop</title>
+    <style>
+        :root {
+            --bg: #050509;
+            --neon-red: #FF0000;
+            --gold: #ffcc00;
+            --glass: rgba(15, 15, 25, 0.9);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            background-image: url('fondoWebPage.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 30px;
+        }
+
+        .form-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--neon-red);
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        h2 { color: var(--gold); text-align: center; margin-top: 0; font-weight: 900; letter-spacing: 1px; }
+
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 0.85rem; color: #bbb; text-transform: uppercase; font-weight: bold; }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        input:focus { border-color: var(--neon-red); outline: none; }
+
+        .btn-send {
+            width: 100%;
+            background: linear-gradient(45deg, var(--neon-red), #990000);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-send:hover { transform: scale(1.02); box-shadow: 0 0 30px var(--neon-red); }
+
+        /* SECCIÓN DE CONTACTO DIRECTO */
+        .direct-contact {
+            margin-top: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px dashed rgba(255, 0, 0, 0.3);
+        }
+
+        .direct-contact h3 { font-size: 1rem; margin-bottom: 15px; color: var(--gold); }
+        
+        .contact-link {
+            display: inline-block;
+            margin: 10px 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover { color: var(--neon-red); }
+
+        .back-home {
+            margin-top: 20px;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-card">
+            <h2>CONFIGURA TU MÁQUINA</h2>
+            <form action="https://formspree.io/f/mjgpndok" method="POST">
+                
+                <div class="input-group">
+                    <label>Tu Nombre</label>
+                    <input type="text" name="nombre" placeholder="Nombre completo" required>
+                </div>
+
+                <div style="display: flex; gap: 15px;">
+                    <div class="input-group" style="flex: 1;">
+                        <label>Email de contacto</label>
+                        <input type="email" name="email" placeholder="email@ejemplo.com" required>
+                    </div>
+                    <div class="input-group" style="flex: 1;">
+                        <label>Teléfono / WhatsApp</label>
+                        <input type="tel" name="telefono" placeholder="+34 600 000 000" required>
+                    </div>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+
+                <div class="input-group">
+                    <label>Tipo de Proyecto</label>
+                    <select name="tipo_pc">
+                        <option value="gaming">PC Gaming / Streaming</option>
+                        <option value="minipc">Mini PC de Salón / Trabajo</option>
+                        <option value="workstation">Edición / Render / IA</option>
+                        <option value="presupuesto_libre">Presupuesto a medida</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Presupuesto máximo sugerido (€)</label>
+                    <input type="number" name="presupuesto" placeholder="Ej: 1500" required>
+                </div>
+
+                <div class="input-group">
+                    <label>¿Qué uso principal le darás?</label>
+                    <textarea name="detalles" rows="3" placeholder="Ej: Jugar a 4K, edición de fotos, que sea muy silencioso..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-send">SOLICITAR PRESUPUESTO GRATIS</button>
+            </form>
+        </div>
+
+        <div class="direct-contact">
+		<h3>¿Prefieres hablar directamente conmigo?</h3>
+		<a href="mailto:dvela275@gmail.com" class="contact-link">📧 dvela275@gmail.com
+		</a>
+		<a href="https://wa.me/34651330647" class="contact-link" target="_blank" rel="noopener noreferrer">
+        💬 WhatsApp: 651 330 647
+		</a>
+		</div>
+
+        <center><a href="index.html" class="back-home">← Volver a la tienda</a></center>
+		</div> 
+
+</body>
+</html>
