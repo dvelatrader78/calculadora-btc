@@ -13,7 +13,7 @@
     <link rel="icon" href="https://cryptologos.cc/logos/bitcoin-btc-logo.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adictos.shop | Binance, NC Wallet & Smartme Hub</title>
+    <title>Adictos.shop | Ofertas y Finanzas</title>
     <style>
         :root {
             --bg: #050509;
@@ -23,6 +23,7 @@
             --neon-purple: #9D00FF;
             --neon-red: #FF0000;
             --smartme-blue: #155fe5;
+            --paypal-blue: #0070ba;
             --temu-orange: #ff6600;
             --glass: rgba(15, 15, 25, 0.7);
         }
@@ -96,49 +97,20 @@
             transition: opacity 0.3s ease;
         }
 
-        /* BANNER 1: ROJO */
-        .hardware-anchor {
-            border: 7px solid var(--neon-red);
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.3);
-        }
-        .hardware-anchor:hover {
-            transform: scale(1.03) translateY(-5px);
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 50px rgba(255, 0, 0, 0.5);
-        }
+        /* ESTILOS DE BORDES NEÓN */
+        .hardware-anchor { border: 7px solid var(--neon-red); box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); }
+        .binance-anchor { border: 7px solid var(--neon-electric-blue); box-shadow: 0 0 15px rgba(0, 85, 255, 0.6); }
+        .nc-banner-link { border: 7px solid var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); }
+        .smartme-anchor { border: 7px solid var(--smartme-blue); box-shadow: 0 0 15px rgba(21, 95, 229, 0.4); }
+        .paypal-anchor { border: 7px solid var(--paypal-blue); box-shadow: 0 0 15px rgba(0, 112, 186, 0.4); }
 
-        /* BANNER 2: AZUL */
-        .binance-anchor {
-            border: 7px solid var(--neon-electric-blue);
-            box-shadow: 0 0 15px rgba(0, 85, 255, 0.6), 0 0 30px rgba(0, 85, 255, 0.3);
-        }
-        .binance-anchor:hover {
+        .banner-link:hover {
             transform: scale(1.03) translateY(-5px);
-            box-shadow: 0 0 30px rgba(0, 85, 255, 0.8), 0 0 50px rgba(0, 85, 255, 0.5);
-        }
-
-        /* BANNER 3: CIAN */
-        .nc-banner-link {
-            border: 7px solid var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4), inset 0 0 10px rgba(157, 0, 255, 0.5);
-        }
-        .nc-banner-link:hover {
-            transform: scale(1.03) translateY(-5px);
-            border-color: var(--neon-purple);
-            box-shadow: 0 0 30px var(--neon-purple), 0 0 50px var(--neon-cyan);
-        }
-
-        /* BANNER 4: AZUL CORPORATIVO (SMARTME) */
-        .smartme-anchor {
-            border: 7px solid var(--smartme-blue);
-            box-shadow: 0 0 15px rgba(21, 95, 229, 0.4), inset 0 0 10px rgba(21, 95, 229, 0.2);
-        }
-        .smartme-anchor:hover {
-            transform: scale(1.03) translateY(-5px);
-            box-shadow: 0 0 30px rgba(21, 95, 229, 0.8), 0 0 50px rgba(21, 95, 229, 0.5);
+            box-shadow: 0 0 30px rgba(255,255,255,0.3);
         }
         
         .brand-header { margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; }
-        .logo-img { width: 130px; height: auto; border-radius: 20px; box-shadow: 0 0 20px rgba(255, 102, 0, 0.2); margin-bottom: 10px; }
+        .logo-img { width: 130px; height: auto; border-radius: 20px; margin-bottom: 10px; }
         .brand-name { font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; background: linear-gradient(to right, var(--temu-orange), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
         .ticker { font-size: 1.1rem; color: var(--gold); font-weight: 800; margin-bottom: 25px; }
 
@@ -194,33 +166,20 @@
         </div>
 
         <div class="banners-column">
-            
-            <!-- BANNER 1 (Borde Rojo) -->
-            <a href="https://temu.to/k/ef640p298sh" 
-               class="banner-link hardware-anchor" target="_blank" rel="nofollow noopener noreferrer"
-               onclick="gtag('event', 'clic_banner', {'nombre_banner': 'temu_app_100_rojo'});">
-                <img src="temu_banner_rojo.svg" alt="Descarga Temu y reclama tu paquete de cupones de 100€" class="banner-img">
+            <a href="https://temu.to/k/ef640p298sh" class="banner-link hardware-anchor" target="_blank" rel="nofollow noopener noreferrer">
+                <img src="temu_banner_rojo.svg" alt="Descarga Temu" class="banner-img">
             </a>
-
-            <!-- BANNER 2 (Borde Azul) -->
-            <a href="https://temu.to/k/ep6a4bicfy0" 
-               class="banner-link binance-anchor" target="_blank" rel="nofollow noopener noreferrer" 
-               onclick="gtag('event', 'clic_banner', {'nombre_banner': 'temu_ahorro_30_azul'});">
-                <img src="temu_banner_azul.svg" alt="Oferta increíble en Temu: 100€ en cupones y 30% de descuento" class="banner-img">
+            <a href="https://temu.to/k/ep6a4bicfy0" class="banner-link binance-anchor" target="_blank" rel="nofollow noopener noreferrer">
+                <img src="temu_banner_azul.svg" alt="Oferta Temu" class="banner-img">
             </a>
-            
-            <!-- BANNER 3 (Borde Cian) -->
-            <a href="https://temu.to/k/et7ovjjkqo4" 
-               target="_blank" rel="nofollow noopener noreferrer" class="banner-link nc-banner-link" title="Artículos Premium en Temu" 
-               onclick="gtag('event', 'clic_banner', {'nombre_banner': 'temu_premium_cian'});">
-                <img src="temu_banner_cian.svg" alt="Consigue artículos de primera calidad a precios muy bajos en Temu" class="banner-img" loading="lazy">
+            <a href="https://temu.to/k/et7ovjjkqo4" class="banner-link nc-banner-link" target="_blank" rel="nofollow noopener noreferrer">
+                <img src="temu_banner_cian.svg" alt="Artículos Premium" class="banner-img">
             </a>
-
-            <!-- BANNER 4 (Borde Azul Corporativo) -> Smartme App -->
-            <a href="https://a8d63.app.goo.gl/tHrB" 
-               class="banner-link smartme-anchor" target="_blank" rel="nofollow noopener noreferrer"
-               onclick="gtag('event', 'clic_banner', {'nombre_banner': 'smartme_app_azul'});">
-                <img src="smartme_banner_azul.svg" alt="Gana dinero por usar tu móvil con Smartme App. Usa el código 1247803" class="banner-img" loading="lazy">
+            <a href="https://a8d63.app.goo.gl/tHrB" class="banner-link smartme-anchor" target="_blank" rel="nofollow noopener noreferrer">
+                <img src="smartme_banner_azul.svg" alt="Gana dinero con Smartme" class="banner-img">
+            </a>
+            <a href="https://py.pl/1zKOeq" class="banner-link paypal-anchor" target="_blank" rel="nofollow noopener noreferrer">
+                <img src="paypal_banner.svg" alt="Gana 10€ con PayPal" class="banner-img">
             </a>
         </div>
     </div>
@@ -238,9 +197,7 @@
     function calculate() {
         const val = document.getElementById('btc').value;
         if (!val || btcPrice === 0) return;
-        
         gtag('event', 'uso_calculadora', { 'valor_btc': val });
-
         document.getElementById('go').style.display = 'none';
         document.getElementById('result-wrapper').style.display = 'block';
         document.getElementById('total').innerText = (val * btcPrice).toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €';
