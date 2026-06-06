@@ -6,142 +6,55 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-BGD0E50850');
     </script>
-
     <link rel="icon" href="https://cryptologos.cc/logos/bitcoin-btc-logo.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adictos.shop | Ofertas y Finanzas</title>
+    <title>Adictos.shop | Hardware & Crypto</title>
     <style>
         :root {
             --bg: #050509;
             --gold: #ffcc00;
             --neon-electric-blue: #0055ff; 
             --neon-cyan: #00FFFF;
-            --neon-purple: #9D00FF;
             --neon-red: #FF0000;
             --smartme-blue: #155fe5;
             --paypal-blue: #0070ba;
             --temu-orange: #ff6600;
             --glass: rgba(15, 15, 25, 0.7);
         }
-
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background-color: var(--bg);
-            background-image: url('fondoWebPage.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center; 
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .main-flex-container {
-            display: flex;
-            flex-direction: row; 
-            align-items: flex-start; 
-            gap: 40px;
-            max-width: 1400px; 
-            width: 100%;
-            justify-content: center; 
-        }
-
-        .card-container {
-            flex: 0 0 380px;
-            z-index: 1;
-        }
-
-        .card {
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 35px; border-radius: 40px;
-            box-shadow: 0 20px 100px rgba(0,0,0,0.8);
-            text-align: center;
-        }
-
-        .banners-column {
-            flex: 1; 
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: 30px;
-            margin-top: 15px;
-        }
-
-        .banner-link {
-            display: block;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-radius: 28px;
-            overflow: hidden;
-            width: 100%;
-            height: auto; 
-            background: #000;
-        }
-
-        .banner-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
-            transition: opacity 0.3s ease;
-        }
-
-        /* ESTILOS DE BORDES NEÓN */
-        .hardware-anchor { border: 7px solid var(--neon-red); box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); }
-        .binance-anchor { border: 7px solid var(--neon-electric-blue); box-shadow: 0 0 15px rgba(0, 85, 255, 0.6); }
-        .nc-banner-link { border: 7px solid var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); }
-        .smartme-anchor { border: 7px solid var(--smartme-blue); box-shadow: 0 0 15px rgba(21, 95, 229, 0.4); }
-        .paypal-anchor { border: 7px solid var(--paypal-blue); box-shadow: 0 0 15px rgba(0, 112, 186, 0.4); }
-
-        .banner-link:hover {
-            transform: scale(1.03) translateY(-5px);
-            box-shadow: 0 0 30px rgba(255,255,255,0.3);
-        }
+        body { font-family: 'Inter', system-ui, sans-serif; background-color: var(--bg); background-image: url('fondoWebPage.png'); background-size: cover; background-position: center; background-attachment: fixed; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .main-flex-container { display: flex; flex-direction: row; align-items: flex-start; gap: 40px; max-width: 1400px; width: 100%; justify-content: center; }
+        .card-container { flex: 0 0 380px; z-index: 1; }
+        .card { background: var(--glass); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 35px; border-radius: 40px; box-shadow: 0 20px 100px rgba(0,0,0,0.8); text-align: center; }
+        .banners-column { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 30px; margin-top: 15px; }
+        .banner-link { display: block; text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-radius: 28px; overflow: hidden; width: 100%; height: auto; background: #000; }
+        .banner-img { width: 100%; height: auto; display: block; object-fit: contain; }
         
+        /* BORDES Y SOMBRAS */
+        .hardware-anchor { border: 7px solid var(--neon-red); box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+        .binance-anchor { border: 7px solid var(--neon-electric-blue); box-shadow: 0 0 15px rgba(0, 85, 255, 0.4); }
+        .nc-banner-link { border: 7px solid var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
+        .smartme-anchor { border: 7px solid var(--smartme-blue); box-shadow: 0 0 15px rgba(21, 95, 229, 0.3); }
+        .paypal-anchor { border: 7px solid var(--paypal-blue); box-shadow: 0 0 15px rgba(0, 112, 186, 0.3); }
+        .fund-anchor { border: 7px solid var(--gold); box-shadow: 0 0 15px rgba(255, 204, 0, 0.4); }
+        
+        .banner-link:hover { transform: scale(1.02) translateY(-5px); box-shadow: 0 0 30px rgba(255,255,255,0.2); }
         .brand-header { margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; }
         .logo-img { width: 130px; height: auto; border-radius: 20px; margin-bottom: 10px; }
         .brand-name { font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; background: linear-gradient(to right, var(--temu-orange), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
         .ticker { font-size: 1.1rem; color: var(--gold); font-weight: 800; margin-bottom: 25px; }
-
-        input {
-            width: 100%; background: rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.1);
-            padding: 18px; color: white; font-size: 1.7rem; border-radius: 20px; text-align: center; box-sizing: border-box;
-        }
-
-        .btn-reveal {
-            background: linear-gradient(45deg, var(--temu-orange), #ff9000);
-            color: white; border: none; padding: 18px 45px; font-size: 1.1rem; font-weight: 900;
-            border-radius: 50px; cursor: pointer; margin-top: 20px; box-shadow: 0 10px 30px rgba(255, 102, 0, 0.3);
-        }
-
+        input { width: 100%; background: rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.1); padding: 18px; color: white; font-size: 1.7rem; border-radius: 20px; text-align: center; box-sizing: border-box; }
+        .btn-reveal { background: linear-gradient(45deg, var(--temu-orange), #ff9000); color: white; border: none; padding: 18px 45px; font-size: 1.1rem; font-weight: 900; border-radius: 50px; cursor: pointer; margin-top: 20px; box-shadow: 0 10px 30px rgba(255, 102, 0, 0.3); }
         #result-wrapper { display: none; margin-top: 20px; }
         .res-value { font-size: 3.2rem; font-weight: 900; }
-        
-        .temu-box {
-            background: linear-gradient(135deg, #ff6600 0%, #ff4400 100%);
-            border-radius: 25px; padding: 20px; margin-top: 25px; color: white; text-decoration: none; display: block;
-        }
+        .temu-box { background: linear-gradient(135deg, #ff6600 0%, #ff4400 100%); border-radius: 25px; padding: 20px; margin-top: 25px; color: white; text-decoration: none; display: block; }
         .coupon-code { background: rgba(0,0,0,0.3); padding: 5px 12px; border-radius: 8px; font-family: monospace; border: 1px dashed white; display: inline-block; }
-
-        @media (max-width: 1000px) {
-            .main-flex-container { flex-direction: column; align-items: center; }
-            .banners-column { width: 100%; max-width: 380px; align-items: center; }
-        }
+        @media (max-width: 1000px) { .main-flex-container { flex-direction: column; align-items: center; } .banners-column { width: 100%; max-width: 380px; align-items: center; } }
     </style>
 </head>
 <body>
-
     <div class="main-flex-container">
         <div class="card-container">
             <div class="card">
@@ -156,7 +69,7 @@
                     <div id="result-wrapper">
                         <div style="font-size: 0.7rem; color: var(--neon-electric-blue); letter-spacing: 2px; font-weight: 800;">SALDO ESTIMADO</div>
                         <div id="total" class="res-value">0,00 €</div>
-                        <a href="https://temu.to/k/e0tl61vc72u" class="temu-box" target="_blank" onclick="gtag('event', 'clic_banner', {'nombre_banner': 'temu_cupon'});">
+                        <a href="https://temu.to/k/e0tl61vc72u" class="temu-box" target="_blank">
                             <div style="font-weight: 800;">🎁 CANJEAR EN TEMU</div>
                             <div class="coupon-code">alh129997</div>
                         </a>
@@ -166,42 +79,20 @@
         </div>
 
         <div class="banners-column">
-            <a href="https://temu.to/k/ef640p298sh" class="banner-link hardware-anchor" target="_blank" rel="nofollow noopener noreferrer">
-                <img src="temu_banner_rojo.svg" alt="Descarga Temu" class="banner-img">
+            <a href="https://www.paypal.com/pools/c/9pO5GnZScQ" class="banner-link fund-anchor" target="_blank" rel="nofollow noopener noreferrer">
+                <img src="recaudacion_banner.svg" alt="Recaudación Hardware" class="banner-img">
             </a>
-            <a href="https://temu.to/k/ep6a4bicfy0" class="banner-link binance-anchor" target="_blank" rel="nofollow noopener noreferrer">
-                <img src="temu_banner_azul.svg" alt="Oferta Temu" class="banner-img">
-            </a>
-            <a href="https://temu.to/k/et7ovjjkqo4" class="banner-link nc-banner-link" target="_blank" rel="nofollow noopener noreferrer">
-                <img src="temu_banner_cian.svg" alt="Artículos Premium" class="banner-img">
-            </a>
-            <a href="https://a8d63.app.goo.gl/tHrB" class="banner-link smartme-anchor" target="_blank" rel="nofollow noopener noreferrer">
-                <img src="smartme_banner_azul.svg" alt="Gana dinero con Smartme" class="banner-img">
-            </a>
-            <a href="https://py.pl/1zKOeq" class="banner-link paypal-anchor" target="_blank" rel="nofollow noopener noreferrer">
-                <img src="paypal_banner.svg" alt="Gana 10€ con PayPal" class="banner-img">
-            </a>
+            <a href="https://temu.to/k/ef640p298sh" class="banner-link hardware-anchor" target="_blank"><img src="temu_banner_rojo.svg" class="banner-img"></a>
+            <a href="https://temu.to/k/ep6a4bicfy0" class="banner-link binance-anchor" target="_blank"><img src="temu_banner_azul.svg" class="banner-img"></a>
+            <a href="https://temu.to/k/et7ovjjkqo4" class="banner-link nc-banner-link" target="_blank"><img src="temu_banner_cian.svg" class="banner-img"></a>
+            <a href="https://a8d63.app.goo.gl/tHrB" class="banner-link smartme-anchor" target="_blank"><img src="smartme_banner_azul.svg" class="banner-img"></a>
+            <a href="https://py.pl/1zKOeq" class="banner-link paypal-anchor" target="_blank"><img src="paypal_banner.svg" class="banner-img"></a>
         </div>
     </div>
-
 <script>
     let btcPrice = 0;
-    async function updatePrice() {
-        try {
-            const r = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCEUR');
-            const d = await r.json();
-            btcPrice = parseFloat(d.price);
-            document.getElementById('price').innerText = `1 BTC = ${btcPrice.toLocaleString('es-ES')} €`;
-        } catch(e) { document.getElementById('price').innerText = "ERROR DE CONEXIÓN"; }
-    }
-    function calculate() {
-        const val = document.getElementById('btc').value;
-        if (!val || btcPrice === 0) return;
-        gtag('event', 'uso_calculadora', { 'valor_btc': val });
-        document.getElementById('go').style.display = 'none';
-        document.getElementById('result-wrapper').style.display = 'block';
-        document.getElementById('total').innerText = (val * btcPrice).toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €';
-    }
+    async function updatePrice() { try { const r = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCEUR'); const d = await r.json(); btcPrice = parseFloat(d.price); document.getElementById('price').innerText = `1 BTC = ${btcPrice.toLocaleString('es-ES')} €`; } catch(e) { document.getElementById('price').innerText = "ERROR DE CONEXIÓN"; } }
+    function calculate() { const val = document.getElementById('btc').value; if (!val || btcPrice === 0) return; document.getElementById('go').style.display = 'none'; document.getElementById('result-wrapper').style.display = 'block'; document.getElementById('total').innerText = (val * btcPrice).toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €'; }
     window.onload = updatePrice;
 </script>
 </body>
